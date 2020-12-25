@@ -157,8 +157,36 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _likeThis,
         tooltip: 'Compte à rebours',
+        backgroundColor: Colors.red,
         child: _coeur
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.red,
+        child: Container(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.add_location,
+                  color: Colors.white,
+                ),
+                onPressed: null,
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.forward,
+                  color: Colors.white,
+                ),
+                onPressed: null,
+              ),
+            ],
+          ),
+        ),
+        shape: CircularNotchedRectangle(),
+      ),
     );
   }
 }
