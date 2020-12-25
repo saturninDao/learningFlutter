@@ -155,9 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       backgroundColor: _couleur,
       floatingActionButton: FloatingActionButton(
-        onPressed: _decrementCounter,
+        onPressed: _likeThis,
         tooltip: 'Compte à rebours',
-        child: Icon(Icons.history),
+        child: _coeur
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
