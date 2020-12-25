@@ -55,16 +55,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 10;
   String _phrase = "Clic avant explosion";
-
   TextStyle _tS = TextStyle(
     color: Colors.green,
     fontSize: 15,
   );
-
   Color _couleur = Colors.white;
-
   Icon _coeur = Icon(Icons.favorite_border, color: Colors.white,);
   bool _likeBool = false;
+  int _indexSelectionne = 0;
+  String _affichage = "0: Accueil";
 
   void _decrementCounter() {
     setState(() {
@@ -99,6 +98,28 @@ class _MyHomePageState extends State<MyHomePage> {
         _coeur = Icon(Icons.favorite, color: Colors.white,);
         _likeBool = true;
       }
+    });
+  }
+  void _itemClique(int index) {
+    setState(() {
+      _indexSelectionne = index;
+      switch (_indexSelectionne) {
+        case 0:
+          {
+            _affichage = '$_indexSelectionne: Accueil';
+          }
+          break;
+        case 1:
+          {
+            _affichage = '$_indexSelectionne: Mon compte';
+      }
+      break;
+      case 2:
+      {
+      _affichage = '$_indexSelectionne: Statistiques';
+      }
+      break;
+    }
     });
   }
 
@@ -144,49 +165,47 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '$_phrase',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              '${_affichage}',
+              style: TextStyle(color: Colors.red, fontSize: 40),
             ),
           ],
         ),
       ),
       backgroundColor: _couleur,
-      floatingActionButton: FloatingActionButton(
-        onPressed: _likeThis,
-        tooltip: 'Compte à rebours',
-        backgroundColor: Colors.red,
-        child: _coeur
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.red,
-        child: Container(
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.add_location,
-                  color: Colors.white,
-                ),
-                onPressed: null,
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.forward,
-                  color: Colors.white,
-                ),
-                onPressed: null,
-              ),
-            ],
-          ),
-        ),
-        shape: CircularNotchedRectangle(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+      icon: Icon(
+      Icons.home,
+        color: Colors.white,
       ),
+      title: Text(
+      'Accueil',
+      style: TextStyle(color: Colors.white),
+    )),
+    BottomNavigationBarItem(
+    icon: Icon(
+    Icons.supervised_user_circle,
+    color: Colors.white,
+    ),
+    title: Text(
+    'Mon compte',
+    style: TextStyle(color: Colors.white),
+    )),
+    BottomNavigationBarItem(
+    icon: Icon(
+    Icons.assessment,
+    color: Colors.white,
+    ),
+    title: Text(
+    'Statistiques',
+    style: TextStyle(color: Colors.white),
+    )),
+    ],
+    backgroundColor: Colors.red,
+    onTap: _itemClique,
+    currentIndex: _indexSelectionne,
+    ),
     );
   }
 }
