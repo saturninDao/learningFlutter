@@ -206,6 +206,25 @@ class _MyHomePageState extends State<MyHomePage> {
     onTap: _itemClique,
     currentIndex: _indexSelectionne,
     ),
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+        DrawerHeader(
+        child: Text(
+          'Menu de navigation',
+          style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+              fontSize: 25
+          ),
+        ),
+      ),
+      Text('Lien 1'),
+      Text('Lien 2'),
+      Text('Lien 3'),
+      ],
+    ),
+    ),
     );
   }
 }
